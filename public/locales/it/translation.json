@@ -57,14 +57,6 @@
         "deleteAll": "Elimina tutte le attività completate",
         "noCompleted": "Nessuna attività completata disponibile"
     },
-    "helpUsImprove": {
-        "placeholder": "Aiutaci a migliorare l'app intent + Includi la tua email per una risposta",
-        "errorTooLong": "Il feedback deve contenere meno di 1000 caratteri",
-        "cancel": "Annulla",
-        "sendFeedback": "Invia feedback",
-        "feedbackSent": "Feedback inviato, grazie!",
-        "feedbackFailed": "Impossibile inviare il feedback. Riprova."
-    },
     "shortcuts": {
         "addTask": "Aggiungi nuova attività",
         "shiftEnterTask": "Su attività: focus ultima sottoattività o creane una",
@@ -83,6 +75,7 @@
         "taskFocused": "Attività {{text}} in focus!",
         "moveItemToFolder": "Sposta elemento nella cartella",
         "deleteTask": "Elimina attività",
+        "setPriorityTooltip": "Imposta priorità",
         "focusModeEnabled": "Modalità focus abilitata",
         "exitFocusMode": "Esci dalla modalità focus",
         "showCompletedTasks": "Mostra attività completate",
@@ -104,6 +97,10 @@
         "cancel": "Annulla",
         "confirmRemove": "Sei sicuro di voler rimuovere questo link?",
         "deleteLink": "Elimina link",
+        "pinLink": "Fissa link",
+        "unpinLink": "Rimuovi fissaggio",
+        "linkPinned": "Link fissato",
+        "linkUnpinned": "Link non più fissato",
         "linksSelected_one": "{{count}} link selezionato",
         "linksSelected_other": "{{count}} link selezionati",
         "openLinks_one": "Apri {{count}} link",
@@ -123,9 +120,6 @@
         "update3Description": "INT3NT ora supporta 10 lingue: inglese, spagnolo, francese, tedesco, italiano, portoghese, russo, cinese, giapponese e coreano. Cambia lingua in qualsiasi momento dalla barra laterale.",
         "gotIt": "Capito",
         "feedbackTitle": "Feedback e Richieste di Funzionalità",
-        "feedbackPlaceholder": "Condividi il tuo feedback o richiedi nuove funzionalità...",
-        "submitFeedback": "Invia Feedback",
-        "feedbackSent": "Grazie per il tuo feedback!",
-        "feedbackFailed": "Impossibile inviare il feedback. Riprova."
+        "submitFeedback": "Invia Feedback"
     }
 }

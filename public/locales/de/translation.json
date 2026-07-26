@@ -57,14 +57,6 @@
         "deleteAll": "Alle erledigten Aufgaben löschen",
         "noCompleted": "Keine erledigten Aufgaben verfügbar"
     },
-    "helpUsImprove": {
-        "placeholder": "Helfen Sie uns, die Intent-App zu verbessern + Geben Sie Ihre E-Mail-Adresse für eine Antwort an",
-        "errorTooLong": "Feedback sollte weniger als 1000 Zeichen lang sein",
-        "cancel": "Abbrechen",
-        "sendFeedback": "Feedback senden",
-        "feedbackSent": "Feedback gesendet, danke!",
-        "feedbackFailed": "Fehler beim Senden des Feedbacks. Bitte versuchen Sie es erneut."
-    },
     "shortcuts": {
         "addTask": "Neue Aufgabe hinzufügen",
         "shiftEnterTask": "Bei Aufgabe: letzte Unteraufgabe fokussieren oder eine erstellen",
@@ -83,6 +75,7 @@
         "taskFocused": "Aufgabe {{text}} fokussiert!",
         "moveItemToFolder": "Element in Ordner verschieben",
         "deleteTask": "Aufgabe löschen",
+        "setPriorityTooltip": "Priorität setzen",
         "focusModeEnabled": "Fokusmodus ist aktiviert",
         "exitFocusMode": "Fokusmodus beenden",
         "showCompletedTasks": "Erledigte Aufgaben anzeigen",
@@ -104,6 +97,10 @@
         "cancel": "Abbrechen",
         "confirmRemove": "Sind Sie sicher, dass Sie diesen Link entfernen möchten?",
         "deleteLink": "Link löschen",
+        "pinLink": "Link anheften",
+        "unpinLink": "Anheften aufheben",
+        "linkPinned": "Link angeheftet",
+        "linkUnpinned": "Link nicht mehr angeheftet",
         "linksSelected_one": "{{count}} Link ausgewählt",
         "linksSelected_other": "{{count}} Links ausgewählt",
         "openLinks_one": "{{count}} Link öffnen",
@@ -123,9 +120,6 @@
         "update3Description": "INT3NT unterstützt jetzt 10 Sprachen: Englisch, Spanisch, Französisch, Deutsch, Italienisch, Portugiesisch, Russisch, Chinesisch, Japanisch und Koreanisch. Wechseln Sie jederzeit die Sprache in der Seitenleiste.",
         "gotIt": "Verstanden",
         "feedbackTitle": "Feedback & Feature-Anfragen",
-        "feedbackPlaceholder": "Teilen Sie Ihr Feedback oder fordern Sie neue Funktionen an...",
-        "submitFeedback": "Feedback senden",
-        "feedbackSent": "Vielen Dank für Ihr Feedback!",
-        "feedbackFailed": "Feedback konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+        "submitFeedback": "Feedback senden"
     }
 }

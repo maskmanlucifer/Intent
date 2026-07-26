@@ -2,10 +2,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getNewSubtask, getNewTask } from "../helper";
 import { createSelector } from "reselect";
-import { Task } from "../types";
+import { Task, TaskPriority } from "../types";
 import { RootState } from "./store";
 import { getTodos } from "../db";
 import dbHelper from "../db/helper";
+
+const PRIORITY_RANK: Record<TaskPriority, number> = { p1: 0, p2: 1, p3: 2 };
+const getPriorityRank = (task: Task) =>
+  task.priority ? PRIORITY_RANK[task.priority] : 3;
 
 const initialState = {
   // Store tasks by categoryId
@@ -21,6 +25,18 @@ export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
 // Helper function to reorder tasks in a category
 const reorderTasksInCategory = (tasks: Task[]) => {
   return tasks.map((task, index) => ({ ...task, order: index }));
+};
+
+// Helper function to sort incomplete tasks by priority (p1 > p2 > p3 > none)
+const orderTasksByPriority = (tasks: Task[]) => {
+  const incompleteTasks = tasks.filter((task) => !task.isCompleted);
+  const completedTasks = tasks.filter((task) => task.isCompleted);
+
+  const sortedIncomplete = [...incompleteTasks].sort(
+    (a, b) => getPriorityRank(a) - getPriorityRank(b),
+  );
+
+  return reorderTasksInCategory([...sortedIncomplete, ...completedTasks]);
 };
 
 // Helper function to handle task state change ordering
@@ -338,6 +354,24 @@ const todoSlice = createSlice({
       dbHelper.upsertTasks(state.itemsByCategory[sourceCategoryId]);
       dbHelper.upsertTasks(state.itemsByCategory[destinationCategoryId]);
     },
+    setTaskPriority: (state, action) => {
+      const { id, categoryId, priority } = action.payload;
+      const categoryTasks = state.itemsByCategory[categoryId] || [];
+      const taskToUpdate = categoryTasks.find((task) => task.id === id);
+
+      if (!taskToUpdate) return;
+
+      const newPriority =
+        taskToUpdate.priority === priority ? undefined : priority;
+
+      const updatedTasks = categoryTasks.map((task) =>
+        task.id === id ? { ...task, priority: newPriority } : task,
+      );
+
+      state.itemsByCategory[categoryId] = orderTasksByPriority(updatedTasks);
+
+      dbHelper.upsertTasks(state.itemsByCategory[categoryId]);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchTodos.fulfilled, (state, action) => {
@@ -409,6 +443,7 @@ export const {
   changeCategoryOfTask,
   moveTask,
   deleteAllCompletedCategoryTasks,
+  setTaskPriority,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;

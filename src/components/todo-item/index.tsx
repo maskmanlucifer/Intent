@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Checkbox, CheckboxChangeEvent } from "antd";
+import { Checkbox, CheckboxChangeEvent, Tooltip } from "antd";
+import { FlagFilled } from "@ant-design/icons";
 import "./index.scss";
 import { Task, Subtask } from "../../types";
+import { TASK_PRIORITIES } from "../../constant";
 import {
   addNewSubtask,
   addNewTask,
@@ -56,6 +58,11 @@ const TodoItem = ({
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  const priority = !todoItem.isSubtask
+    ? (todoItem as Task).priority
+    : undefined;
+  const priorityConfig = TASK_PRIORITIES.find((p) => p.key === priority);
+
   const handleCheckboxChange = (e: CheckboxChangeEvent) => {
     e.stopPropagation();
     setTimeout(() => {
@@ -107,6 +114,19 @@ const TodoItem = ({
         checked={isCompleted}
         className="checkbox"
       />
+      {priorityConfig && (
+        <Tooltip
+          arrow={false}
+          title={priorityConfig.label}
+          mouseEnterDelay={0}
+          mouseLeaveDelay={0}
+        >
+          <FlagFilled
+            className="priority-indicator"
+            style={{ color: priorityConfig.color }}
+          />
+        </Tooltip>
+      )}
       {editing ? (
         <TextArea
           ref={textareaRef}

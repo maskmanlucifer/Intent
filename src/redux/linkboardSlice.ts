@@ -51,6 +51,13 @@ const notesSlice = createSlice({
         dbHelper.putLink(action.payload);
       }
     },
+    toggleLinkPin: (state, action) => {
+      const link = state.links.find((link) => link.id === action.payload);
+      if (link) {
+        link.isPinned = !link.isPinned;
+        dbHelper.putLink(link);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLinks.fulfilled, (state, action) => {
@@ -59,8 +66,14 @@ const notesSlice = createSlice({
   },
 });
 
-export const { addLink, removeLink, updateLink, addLinks, removeLinks } =
-  notesSlice.actions;
+export const {
+  addLink,
+  removeLink,
+  updateLink,
+  addLinks,
+  removeLinks,
+  toggleLinkPin,
+} = notesSlice.actions;
 
 const selectLinkboardLinks = (state: RootState) => state.linkboard.links;
 
@@ -68,6 +81,9 @@ export const selectLinks = createSelector(
   [selectLinkboardLinks],
   (links) =>
     [...links].sort((a, b) => {
+      if (!!a.isPinned !== !!b.isPinned) {
+        return a.isPinned ? -1 : 1;
+      }
       if (a.createdAt > b.createdAt) {
         return -1;
       }

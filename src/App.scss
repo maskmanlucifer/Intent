@@ -292,20 +292,24 @@ body {
     
     .ant-modal-close {
         color: var(--text-secondary) !important;
-        
+        width: 24px !important;
+        height: 24px !important;
+        background: transparent !important;
+
         &:hover {
             color: var(--text-primary) !important;
+            background: var(--bg-hover) !important;
         }
     }
-    
+
     .ant-drawer-close {
         color: var(--text-secondary) !important;
-        
+
         &:hover {
             color: var(--text-primary) !important;
         }
     }
-    
+
     // Additional dark theme improvements for linkboard
     .ant-select-selector {
         background-color: var(--bg-input) !important;
@@ -404,15 +408,19 @@ body {
 
 .ant-modal-close {
     color: var(--text-secondary);
-    
+    width: 24px;
+    height: 24px;
+    background: transparent;
+
     &:hover {
         color: var(--text-primary);
+        background: var(--bg-hover);
     }
 }
 
 .ant-drawer-close {
     color: var(--text-secondary);
-    
+
     &:hover {
         color: var(--text-primary);
     }

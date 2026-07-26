@@ -57,14 +57,6 @@
         "deleteAll": "Delete All Completed Todos",
         "noCompleted": "No completed todos available"
     },
-    "helpUsImprove": {
-        "placeholder": "Help us improve intent app + Include your email for a response",
-        "errorTooLong": "Feedback should be less than 1000 characters",
-        "cancel": "Cancel",
-        "sendFeedback": "Send Feedback",
-        "feedbackSent": "Feedback sent, thank you!",
-        "feedbackFailed": "Failed to send feedback. Please try again."
-    },
     "shortcuts": {
         "addTask": "Add a new task",
         "shiftEnterTask": "On task: focus last subtask or create one",
@@ -83,6 +75,7 @@
         "taskFocused": "Task {{text}} focused!",
         "moveItemToFolder": "Move item to folder",
         "deleteTask": "Delete task",
+        "setPriorityTooltip": "Set priority",
         "focusModeEnabled": "Focus mode is enabled",
         "exitFocusMode": "Exit focus mode",
         "showCompletedTasks": "Show completed tasks",
@@ -104,6 +97,10 @@
         "cancel": "Cancel",
         "confirmRemove": "Are you sure you want to remove this link?",
         "deleteLink": "Delete link",
+        "pinLink": "Pin link",
+        "unpinLink": "Unpin link",
+        "linkPinned": "Link pinned",
+        "linkUnpinned": "Link unpinned",
         "linksSelected": "{{count}} link selected",
         "linksSelected_one": "{{count}} link selected",
         "linksSelected_other": "{{count}} links selected",
@@ -126,9 +123,6 @@
         "update3Description": "INT3NT now supports 10 languages: English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Japanese, and Korean. Switch languages anytime from the sidebar.",
         "gotIt": "Got it",
         "feedbackTitle": "Feedback & Feature Requests",
-        "feedbackPlaceholder": "Share your feedback or request new features...",
-        "submitFeedback": "Submit Feedback",
-        "feedbackSent": "Thank you for your feedback!",
-        "feedbackFailed": "Failed to submit feedback. Please try again."
+        "submitFeedback": "Submit Feedback"
     }
 }

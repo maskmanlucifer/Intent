@@ -235,6 +235,15 @@
                         color: #ef4444;
                         background: rgba(239, 68, 68, 0.1);
                     }
+
+                    &.pin-btn {
+                        color: var(--primary-color);
+                        background: rgba(21, 93, 252, 0.1);
+                    }
+                }
+
+                &.pin-btn.pinned {
+                    color: var(--primary-color);
                 }
             }
         }

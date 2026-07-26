@@ -6,6 +6,8 @@ export type Category = {
   showCompletedTasks?: boolean;
 };
 
+export type TaskPriority = "p1" | "p2" | "p3";
+
 export type Task = {
   id: string;
   text: string;
@@ -15,6 +17,7 @@ export type Task = {
   parentId: string | null;
   categoryId: string;
   order: number;
+  priority?: TaskPriority;
 };
 
 export type Subtask = {
@@ -42,6 +45,7 @@ export type TLink = {
   imageUrl?: string;
   type: "webpage" | "image" | "video";
   createdAt: number;
+  isPinned?: boolean;
 };
 
 export type Pages = (typeof PAGES)[keyof typeof PAGES];

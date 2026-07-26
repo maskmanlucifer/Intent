@@ -6,6 +6,7 @@ import {
   removeLink,
   removeLinks,
   selectLinks,
+  toggleLinkPin,
 } from "../../redux/linkboardSlice";
 import {
   Button,
@@ -16,7 +17,12 @@ import {
   Popconfirm,
   Select,
 } from "antd";
-import { DeleteOutlined, MehOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  MehOutlined,
+  PushpinFilled,
+  PushpinOutlined,
+} from "@ant-design/icons";
 import { ReactComponent as TrashIcon } from "../../assets/icons/remove.svg";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
 import { InfoCircleOutlined } from "@ant-design/icons";
@@ -229,8 +235,19 @@ const Linkboard = () => {
                   "youtube-item": link.type === "video" && isYouTubeUrl(link.url),
                   "webpage-item": link.type === "webpage",
                   "image-item": link.type === "image",
+                  "pinned-item": link.isPinned,
                 })}
-                onClick={() => window.open(link.url, "_blank")}
+                onClick={() => {
+                  if (selectedLinks.length > 0) {
+                    setSelectedLinks(
+                      selectedLinks.includes(link.id)
+                        ? selectedLinks.filter((id) => id !== link.id)
+                        : [...selectedLinks, link.id],
+                    );
+                    return;
+                  }
+                  window.open(link.url, "_blank");
+                }}
               >
                 <div className="masonry-content">
                   <OgImageContent link={link} />
@@ -257,6 +274,29 @@ const Linkboard = () => {
                   <div className="separator"></div>
 
                   <div className="actions-section">
+                    <button
+                      className={classNames("action-btn", "pin-btn", {
+                        pinned: link.isPinned,
+                      })}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch(toggleLinkPin(link.id));
+                        messageApi.open({
+                          type: "success",
+                          content: link.isPinned
+                            ? t("linkboard.linkUnpinned")
+                            : t("linkboard.linkPinned"),
+                          duration: 3,
+                        });
+                      }}
+                      title={
+                        link.isPinned
+                          ? t("linkboard.unpinLink")
+                          : t("linkboard.pinLink")
+                      }
+                    >
+                      {link.isPinned ? <PushpinFilled /> : <PushpinOutlined />}
+                    </button>
                     <Popconfirm
                       icon={<InfoCircleOutlined style={{ color: "#155dfc" }} />}
                       title={t('linkboard.removeUrlTitle')}

@@ -8,21 +8,3 @@ export const fetchAndUpdateSession = () => {
     });
   }
 };
-
-
-export const getUniqueUserId = async () => {
-  try {
-    const { uniqueUserId } = await chrome.storage.local.get("uniqueUserId");
-
-    if (uniqueUserId) {
-      return uniqueUserId;
-    }
-
-    const newId = crypto.randomUUID();
-    await chrome.storage.local.set({ uniqueUserId: newId });
-
-    return newId;
-  } catch {
-    return crypto.randomUUID();
-  }
-};

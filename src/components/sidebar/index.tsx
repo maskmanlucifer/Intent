@@ -6,9 +6,8 @@ import { ReactComponent as FolderIcon } from "../../assets/icons/folder.svg";
 import { ReactComponent as TodayFolderIcon } from "../../assets/icons/today-folder.svg";
 import { ReactComponent as CompletedIcon } from "../../assets/icons/completed.svg";
 import { ReactComponent as AddSquareIcon } from "../../assets/icons/add-square.svg";
-import HelpUsImprove from "../help-us-improve";
 import classNames from "classnames";
-import { Button, Dropdown, Input, InputRef, message, Modal, Popover, Tooltip } from "antd";
+import { Button, Dropdown, Input, InputRef, message, Modal, Tooltip } from "antd";
 import {
   CloseOutlined,
   DeleteOutlined,
@@ -37,6 +36,8 @@ import ThemeToggle from "../theme-toggle";
 import LanguageSwitcher from "../language-switcher";
 import WhatsNewButton from "../whats-new-button";
 import WhatsNewModal from "../whats-new-modal";
+
+const FEEDBACK_EMAIL = "brightpixellabs@gmail.com";
 
 interface SidebarProps {
   folders: Category[];
@@ -164,7 +165,6 @@ const Sidebar = ({
   const [isEditing, setIsEditing] = useState<Boolean | string>(false);
   const [isDeleting, setIsDeleting] = useState<Boolean | string>(false);
   const [messageApi, contextHolder] = message.useMessage();
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isDataStorageModalOpen, setIsDataStorageModalOpen] = useState(false);
   const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false);
   const [isUpsertCategoryModalOpen, setIsUpsertCategoryModalOpen] = useState(false);
@@ -410,25 +410,22 @@ const Sidebar = ({
           <span title={t('sidebar.howWeStoreData')}>{t('sidebar.howWeStoreData')}</span>
         </div>
 
-        <Popover
-          content={<HelpUsImprove setPopoverState={setIsPopoverOpen} />}
-          title={null}
-          trigger="click"
-          open={isPopoverOpen}
-          destroyOnHidden={true}
-          onOpenChange={(open) => setIsPopoverOpen(open)}
-          placement="bottomRight"
-          arrow={false}
+        <div
+          className="sidebar-bottom-action-item"
+          onClick={() => {
+            const subject = encodeURIComponent(
+              "Intent app feedback or feature request",
+            );
+            window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${subject}`;
+          }}
         >
-          <div className="sidebar-bottom-action-item">
-            {withTooltip(
-              <QuestionIcon />,
-              t('sidebar.helpUsImprove'),
-              isSidebarCollapsed,
-            )}
-            <span title={t('sidebar.helpUsImprove')}>{t('sidebar.helpUsImprove')}</span>
-          </div>
-        </Popover>
+          {withTooltip(
+            <QuestionIcon />,
+            t('sidebar.helpUsImprove'),
+            isSidebarCollapsed,
+          )}
+          <span title={t('sidebar.helpUsImprove')}>{t('sidebar.helpUsImprove')}</span>
+        </div>
 
         <div
           className="sidebar-bottom-action-item"

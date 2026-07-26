@@ -6,6 +6,12 @@ export const TODAY_CATEGORY_ID = "1";
 
 const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
+export const TASK_PRIORITIES = [
+  { key: "p1", label: "P1", color: "#ef4444" },
+  { key: "p2", label: "P2", color: "#f59e0b" },
+  { key: "p3", label: "P3", color: "#3b82f6" },
+] as const;
+
 export const LINKBOARD_FILTER_OPTIONS = [
   {
     label: "All",

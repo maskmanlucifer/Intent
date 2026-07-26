@@ -57,14 +57,6 @@
         "deleteAll": "完了したすべてのタスクを削除",
         "noCompleted": "完了したタスクはありません"
     },
-    "helpUsImprove": {
-        "placeholder": "intentアプリの改善にご協力ください + 返信用のメールアドレスを含めてください",
-        "errorTooLong": "フィードバックは1000文字以内である必要があります",
-        "cancel": "キャンセル",
-        "sendFeedback": "フィードバックを送信",
-        "feedbackSent": "フィードバックが送信されました。ありがとうございます！",
-        "feedbackFailed": "フィードバックの送信に失敗しました。もう一度お試しください。"
-    },
     "shortcuts": {
         "addTask": "新しいタスクを追加",
         "shiftEnterTask": "タスク上：最後のサブタスクにフォーカスまたは作成",
@@ -83,6 +75,7 @@
         "taskFocused": "タスク {{text}} にフォーカスしました！",
         "moveItemToFolder": "アイテムをフォルダに移動",
         "deleteTask": "タスクを削除",
+        "setPriorityTooltip": "優先度を設定",
         "focusModeEnabled": "フォーカスモードが有効です",
         "exitFocusMode": "フォーカスモードを終了",
         "showCompletedTasks": "完了したタスクを表示",
@@ -104,6 +97,10 @@
         "cancel": "キャンセル",
         "confirmRemove": "このリンクを削除してもよろしいですか？",
         "deleteLink": "リンクを削除",
+        "pinLink": "リンクをピン留め",
+        "unpinLink": "ピン留めを解除",
+        "linkPinned": "リンクをピン留めしました",
+        "linkUnpinned": "ピン留めを解除しました",
         "linksSelected_other": "{{count}} リンクを選択中",
         "openLinks_one": "{{count}} リンクを開く",
         "openLinks_other": "{{count}} リンクを開く",
@@ -122,9 +119,6 @@
         "update3Description": "INT3NTは現在、英語、スペイン語、フランス語、ドイツ語、イタリア語、ポルトガル語、ロシア語、中国語、日本語、韓国語の10言語をサポートしています。サイドバーからいつでも言語を切り替えることができます。",
         "gotIt": "了解",
         "feedbackTitle": "フィードバックと機能リクエスト",
-        "feedbackPlaceholder": "フィードバックを共有するか、新機能をリクエストしてください...",
-        "submitFeedback": "フィードバックを送信",
-        "feedbackSent": "フィードバックありがとうございます！",
-        "feedbackFailed": "フィードバックの送信に失敗しました。もう一度お試しください。"
+        "submitFeedback": "フィードバックを送信"
     }
 }

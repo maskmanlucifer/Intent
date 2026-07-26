@@ -57,14 +57,6 @@
         "deleteAll": "Supprimer toutes les tâches terminées",
         "noCompleted": "Aucune tâche terminée disponible"
     },
-    "helpUsImprove": {
-        "placeholder": "Aidez-nous à améliorer l'application intent + Incluez votre email pour une réponse",
-        "errorTooLong": "Les commentaires doivent comporter moins de 1000 caractères",
-        "cancel": "Annuler",
-        "sendFeedback": "Envoyer des commentaires",
-        "feedbackSent": "Commentaires envoyés, merci !",
-        "feedbackFailed": "Échec de l'envoi des commentaires. Veuillez réessayer."
-    },
     "shortcuts": {
         "addTask": "Ajouter une nouvelle tâche",
         "shiftEnterTask": "Sur une tâche : cibler la dernière sous-tâche ou en créer une",
@@ -83,6 +75,7 @@
         "taskFocused": "Tâche {{text}} ciblée !",
         "moveItemToFolder": "Déplacer l'élément vers le dossier",
         "deleteTask": "Supprimer la tâche",
+        "setPriorityTooltip": "Définir la priorité",
         "focusModeEnabled": "Le mode focus est activé",
         "exitFocusMode": "Quitter le mode focus",
         "showCompletedTasks": "Afficher les tâches terminées",
@@ -104,6 +97,10 @@
         "cancel": "Annuler",
         "confirmRemove": "Êtes-vous sûr de vouloir supprimer ce lien ?",
         "deleteLink": "Supprimer le lien",
+        "pinLink": "Épingler le lien",
+        "unpinLink": "Détacher le lien",
+        "linkPinned": "Lien épinglé",
+        "linkUnpinned": "Lien détaché",
         "linksSelected_one": "{{count}} lien sélectionné",
         "linksSelected_other": "{{count}} liens sélectionnés",
         "openLinks_one": "Ouvrir {{count}} lien",
@@ -123,9 +120,6 @@
         "update3Description": "INT3NT prend désormais en charge 10 langues : Anglais, Espagnol, Français, Allemand, Italien, Portugais, Russe, Chinois, Japonais et Coréen. Changez de langue à tout moment depuis la barre latérale.",
         "gotIt": "Compris",
         "feedbackTitle": "Commentaires et Demandes de Fonctionnalités",
-        "feedbackPlaceholder": "Partagez vos commentaires ou demandez de nouvelles fonctionnalités...",
-        "submitFeedback": "Envoyer des Commentaires",
-        "feedbackSent": "Merci pour vos commentaires!",
-        "feedbackFailed": "Échec de l'envoi des commentaires. Veuillez réessayer."
+        "submitFeedback": "Envoyer des Commentaires"
     }
 }

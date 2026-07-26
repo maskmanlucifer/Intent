@@ -189,6 +189,19 @@
          }
       }
 
+      .priority-icon {
+         color: var(--text-tertiary);
+         transition: color 0.15s ease;
+
+         &:hover {
+            color: var(--text-primary);
+         }
+
+         &.active:hover {
+            opacity: 0.8;
+         }
+      }
+
       .focus-icon {
          height: 18px;
          width: 18px;
@@ -244,6 +257,13 @@
 
 .folder-move-item-to .ant-dropdown-menu-title-content {
    color: var(--primary-color);
+}
+
+.priority-menu-item {
+   display: flex;
+   gap: 8px;
+   align-items: center;
+   font-size: 13px;
 }
 
 // Fix dropdown flickering issues

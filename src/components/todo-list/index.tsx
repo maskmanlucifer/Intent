@@ -1,5 +1,11 @@
 /* eslint-disable no-useless-concat */
-import { DeleteOutlined, PlusOutlined, SwapOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  FlagFilled,
+  FlagOutlined,
+  PlusOutlined,
+  SwapOutlined,
+} from "@ant-design/icons";
 import {
   Button,
   Collapse,
@@ -19,6 +25,7 @@ import {
   changeCategoryOfTask,
   deleteAllCompletedCategoryTasks,
   deleteTask,
+  setTaskPriority,
 } from "../../redux/todoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as FocusIcon } from "../../assets/icons/focus.svg";
@@ -28,7 +35,7 @@ import { updateCategory } from "../../redux/categorySlice";
 import { selectFocusedTaskId, syncSettings } from "../../redux/sessionSlice";
 import useDnd from "../../hooks/useDnd";
 import { ReactComponent as DragIcon } from "../../assets/icons/drag-icon.svg";
-import { KEYBOARD_SHORTCUTS } from "../../constant";
+import { KEYBOARD_SHORTCUTS, TASK_PRIORITIES } from "../../constant";
 import { useMemo, useCallback } from "react";
 import React from "react";
 
@@ -65,6 +72,81 @@ const TodoList = ({
         onMouseDown={(e) => e.stopPropagation()}
         onMouseUp={(e) => e.stopPropagation()}
       >
+        <Tooltip
+          arrow={false}
+          title={t('todoList.setPriorityTooltip')}
+          mouseEnterDelay={0}
+          mouseLeaveDelay={0}
+        >
+          <div
+            onClick={(e: React.MouseEvent) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+            onMouseDown={(e: React.MouseEvent) => e.stopPropagation()}
+            onMouseUp={(e: React.MouseEvent) => e.stopPropagation()}
+          >
+            <Dropdown
+              menu={{
+                items: TASK_PRIORITIES.map((priority) => ({
+                  key: priority.key,
+                  label: (
+                    <span
+                      className="priority-menu-item"
+                      style={
+                        task.priority === priority.key
+                          ? { color: priority.color, fontWeight: 700 }
+                          : undefined
+                      }
+                    >
+                      <FlagFilled style={{ color: priority.color }} />
+                      {priority.label}
+                    </span>
+                  ),
+                  className: "priority-menu-item-wrapper",
+                })),
+                onClick: ({ key, domEvent }) => {
+                  domEvent.preventDefault();
+                  domEvent.stopPropagation();
+                  dispatch(
+                    setTaskPriority({
+                      id: task.id,
+                      categoryId: task.categoryId,
+                      priority: key,
+                    }),
+                  );
+                },
+              }}
+              trigger={["click"]}
+            >
+              {task.priority ? (
+                <FlagFilled
+                  className="priority-icon active"
+                  style={{
+                    color: TASK_PRIORITIES.find((p) => p.key === task.priority)
+                      ?.color,
+                  }}
+                  onClick={(e: React.MouseEvent) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onMouseDown={(e: React.MouseEvent) => e.stopPropagation()}
+                  onMouseUp={(e: React.MouseEvent) => e.stopPropagation()}
+                />
+              ) : (
+                <FlagOutlined
+                  className="priority-icon"
+                  onClick={(e: React.MouseEvent) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onMouseDown={(e: React.MouseEvent) => e.stopPropagation()}
+                  onMouseUp={(e: React.MouseEvent) => e.stopPropagation()}
+                />
+              )}
+            </Dropdown>
+          </div>
+        </Tooltip>
         <Tooltip
           arrow={false}
           title={t('todoList.addSubtask')}
