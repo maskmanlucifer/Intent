@@ -1,0 +1,70 @@
+.priority-todo-list {
+   padding: 16px;
+
+   .no-priority-todos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 100px);
+      width: 100%;
+   }
+
+   .priority-todo-items-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      width: 700px;
+      margin: auto;
+      margin-top: 80px;
+
+      .priority-todo-items-group {
+         display: flex;
+         flex-direction: column;
+         gap: 16px;
+         margin: auto;
+         width: 100%;
+
+         .priority-todo-items-group-header {
+            font-size: 24px;
+            font-weight: 600;
+         }
+      }
+
+      .ant-collapse-header-text {
+         width: calc(100% - 60px);
+      }
+   }
+
+   .todo-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      height: 22px;
+      border: 1px solid var(--border-primary);
+      background-color: var(--bg-tertiary);
+      padding: 4px;
+      border-radius: 4px;
+
+      .delete-icon {
+         cursor: pointer;
+
+         svg {
+            color: var(--red-500);
+         }
+      }
+
+      .priority-icon {
+         cursor: pointer;
+         color: var(--text-tertiary);
+         transition: color 0.15s ease;
+
+         &:hover {
+            color: var(--text-primary);
+         }
+
+         &.active:hover {
+            opacity: 0.8;
+         }
+      }
+   }
+}

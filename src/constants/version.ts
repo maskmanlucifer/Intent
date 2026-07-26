@@ -1,26 +1,5 @@
-export const APP_VERSION = "0.1.0";
+export const APP_VERSION = "5.8";
 export const LAST_SEEN_VERSION_KEY = "lastSeenVersion";
-
-/**
- * Features list for each version
- * Add new features when version updates
- */
-export const VERSION_FEATURES = {
-    "0.1.0": [
-        {
-            titleKey: "whatsNew.update2Title",
-            descriptionKey: "whatsNew.update2Description",
-        },
-        {
-            titleKey: "whatsNew.update1Title",
-            descriptionKey: "whatsNew.update1Description",
-        },
-        {
-            titleKey: "whatsNew.update3Title",
-            descriptionKey: "whatsNew.update3Description",
-        },
-    ],
-};
 
 /**
  * Get the last seen version from storage
@@ -65,11 +44,4 @@ export const setLastSeenVersion = async (version: string): Promise<void> => {
 export const hasNewUpdates = async (): Promise<boolean> => {
     const lastSeenVersion = await getLastSeenVersion();
     return lastSeenVersion !== APP_VERSION;
-};
-
-/**
- * Get features for the current version
- */
-export const getCurrentVersionFeatures = () => {
-    return VERSION_FEATURES[APP_VERSION as keyof typeof VERSION_FEATURES] || [];
 };

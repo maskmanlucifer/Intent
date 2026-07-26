@@ -44,7 +44,10 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "static/*"
+        "static/*",
+        "whats-new/whats-new.html",
+        "whats-new/whats-new.css",
+        "whats-new/whats-new.js"
       ],
       "matches": [
         "<all_urls>"

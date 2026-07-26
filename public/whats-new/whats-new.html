@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What's New in Intent</title>
+<script>
+  // Default to dark theme unless the user explicitly chose light in Intent.
+  (function () {
+    var savedTheme = localStorage.getItem('theme');
+    document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+  })();
+</script>
+<link rel="stylesheet" href="whats-new.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="hd">
+    <div class="hd-logo" aria-hidden="true">
+      <img src="../logo32.png" width="24" height="24" alt="" style="border-radius:6px;">
+    </div>
+    <div>
+      <span class="hd-text-name">Intent</span>
+      <span class="hd-text-sub" id="version-sub">What's new</span>
+    </div>
+  </header>
+
+  <h1>Pin, prioritize, and reach us faster</h1>
+  <p class="lede">Three changes aimed at keeping the important stuff visible and making it easier to talk to us.</p>
+
+  <!-- ══════ Feature 1: Pin links ══════ -->
+  <div class="feature">
+    <div class="feature-title">Pin your most important links</div>
+    <p class="feature-desc">Every link in Linkboard now has a pin action. Pinned links float to the top of the board, so the ones you reach for daily never get buried under new saves.</p>
+    <div class="preview">
+      <div class="il-card">
+        <div class="il-card-thumb"></div>
+        <div class="il-card-bar">
+          <div class="il-card-url"></div>
+          <div class="il-pin-btn active">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3a1 1 0 0 1 1 1v5.06l2.6 4.34a1 1 0 0 1-.86 1.5H13v5.1a1 1 0 1 1-2 0V14.9H6.26a1 1 0 0 1-.86-1.5L8 9.06V4a1 1 0 0 1 1-1h7z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ Feature 2: Task priorities ══════ -->
+  <div class="feature">
+    <div class="feature-title">Prioritize tasks with P1 / P2 / P3</div>
+    <p class="feature-desc">Flag any task as P1, P2, or P3 straight from the task toolbar. Each priority gets its own view in the sidebar, pulling matching tasks in from every folder into one place.</p>
+    <div class="preview">
+      <div class="il-priority">
+        <div class="il-priority-rail" aria-hidden="true">
+          <div class="il-priority-chip p1 active">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a1 1 0 0 1 1 1v18a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm2 1h11l-2.5 4L19 11H8V3z"/></svg>
+            P1
+          </div>
+          <div class="il-priority-chip p2">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a1 1 0 0 1 1 1v18a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm2 1h11l-2.5 4L19 11H8V3z"/></svg>
+            P2
+          </div>
+          <div class="il-priority-chip p3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a1 1 0 0 1 1 1v18a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm2 1h11l-2.5 4L19 11H8V3z"/></svg>
+            P3
+          </div>
+        </div>
+        <svg class="il-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="il-sidebar-item p1-color">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a1 1 0 0 1 1 1v18a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm2 1h11l-2.5 4L19 11H8V3z"/></svg>
+          P1
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ Feature 3: Feedback via email ══════ -->
+  <div class="feature">
+    <div class="feature-title">Feedback now goes straight to our inbox</div>
+    <p class="feature-desc">"Help us improve" no longer routes through a form you fill in blind. One click opens your email client, addressed to us, so you know exactly where your words are headed.</p>
+    <div class="preview">
+      <div class="il-mail">
+        <div class="il-mail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </div>
+        <svg class="il-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="il-mail-client">
+          <div class="il-mail-line title"></div>
+          <div class="il-mail-line"></div>
+          <div class="il-mail-line short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">Released in v5.7</h2>
+
+  <!-- ══════ Feature: Open multiple links ══════ -->
+  <div class="feature">
+    <div class="feature-title">Open Multiple Links at Once</div>
+    <p class="feature-desc">Select multiple links in Linkboard and open them all at once with a single click. Perfect for managing multiple resources and batch processing your saved links efficiently.</p>
+    <div class="preview">
+      <div class="il-multi">
+        <div class="il-multi-card">
+          <div class="il-multi-check checked"></div>
+          <div class="il-card-url"></div>
+        </div>
+        <div class="il-multi-card">
+          <div class="il-multi-check checked"></div>
+          <div class="il-card-url"></div>
+        </div>
+        <div class="il-multi-card">
+          <div class="il-multi-check"></div>
+          <div class="il-card-url"></div>
+        </div>
+        <div class="il-multi-btn">Open 2 links</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ Feature: Task/subtask navigation ══════ -->
+  <div class="feature">
+    <div class="feature-title">Improved Task ↔ Subtask Navigation</div>
+    <p class="feature-desc">Navigate seamlessly between tasks and subtasks using Shift+Enter. On a task, jump to the last subtask or create a new one. On a subtask, move to the next task or create one. Work faster with improved keyboard navigation.</p>
+    <div class="preview">
+      <div class="il-nav">
+        <div class="il-nav-row task">
+          <div class="il-nav-dot"></div>
+          <div class="il-nav-line"></div>
+        </div>
+        <div class="il-nav-row subtask active">
+          <div class="il-nav-dot"></div>
+          <div class="il-nav-line"></div>
+        </div>
+        <div class="il-nav-keys">
+          <kbd>Shift</kbd>+<kbd>Enter</kbd>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ Feature: Multi-language support ══════ -->
+  <div class="feature">
+    <div class="feature-title">Multi-Language Support</div>
+    <p class="feature-desc">Intent now supports 10 languages: English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Japanese, and Korean. Switch languages anytime from the sidebar.</p>
+    <div class="preview">
+      <div class="il-lang">
+        <div class="il-lang-chip active">EN</div>
+        <div class="il-lang-chip">ES</div>
+        <div class="il-lang-chip">FR</div>
+        <div class="il-lang-chip">DE</div>
+        <div class="il-lang-chip">JA</div>
+        <div class="il-lang-chip">+5</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="whats-new.js"></script>
+</body>
+</html>

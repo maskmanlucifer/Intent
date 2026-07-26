@@ -57,6 +57,9 @@
         "deleteAll": "Delete All Completed Todos",
         "noCompleted": "No completed todos available"
     },
+    "priorityView": {
+        "noTasks": "No tasks with this priority"
+    },
     "shortcuts": {
         "addTask": "Add a new task",
         "shiftEnterTask": "On task: focus last subtask or create one",
@@ -112,17 +115,5 @@
         "deleteLinks": "Delete {{count}} link",
         "deleteLinks_one": "Delete {{count}} link",
         "deleteLinks_other": "Delete {{count}} links"
-    },
-    "whatsNew": {
-        "title": "What's New in INT3NT",
-        "update1Title": "Improved Task ↔ Subtask Navigation",
-        "update1Description": "Navigate seamlessly between tasks and subtasks using Shift+Enter. On a task, jump to the last subtask or create a new one. On a subtask, move to the next task or create one. Work faster with improved keyboard navigation.",
-        "update2Title": "Open Multiple Links at Once",
-        "update2Description": "Select multiple links in Linkboard and open them all at once with a single click. Perfect for managing multiple resources and batch processing your saved links efficiently.",
-        "update3Title": "Multi-Language Support",
-        "update3Description": "INT3NT now supports 10 languages: English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Japanese, and Korean. Switch languages anytime from the sidebar.",
-        "gotIt": "Got it",
-        "feedbackTitle": "Feedback & Feature Requests",
-        "submitFeedback": "Submit Feedback"
     }
 }

@@ -57,6 +57,9 @@
         "deleteAll": "Alle erledigten Aufgaben löschen",
         "noCompleted": "Keine erledigten Aufgaben verfügbar"
     },
+    "priorityView": {
+        "noTasks": "Keine Aufgaben mit dieser Priorität"
+    },
     "shortcuts": {
         "addTask": "Neue Aufgabe hinzufügen",
         "shiftEnterTask": "Bei Aufgabe: letzte Unteraufgabe fokussieren oder eine erstellen",
@@ -109,17 +112,5 @@
         "linksRemoved": "Links vom Linkboard entfernt",
         "deleteLinks_one": "{{count}} Link löschen",
         "deleteLinks_other": "{{count}} Links löschen"
-    },
-    "whatsNew": {
-        "title": "Was gibt es Neues in INT3NT",
-        "update1Title": "Verbesserte Aufgabe ↔ Unteraufgabe Navigation",
-        "update1Description": "Navigieren Sie nahtlos zwischen Aufgaben und Unteraufgaben mit Shift+Enter. Bei einer Aufgabe springen Sie zur letzten Unteraufgabe oder erstellen eine neue. Bei einer Unteraufgabe wechseln Sie zur nächsten Aufgabe oder erstellen eine. Arbeiten Sie schneller mit verbesserter Tastaturnavigation.",
-        "update2Title": "Mehrere Links auf einmal öffnen",
-        "update2Description": "Wählen Sie mehrere Links im Linkboard aus und öffnen Sie sie alle mit einem Klick. Perfekt für die Verwaltung mehrerer Ressourcen und die effiziente Batch-Verarbeitung Ihrer gespeicherten Links.",
-        "update3Title": "Mehrsprachige Unterstützung",
-        "update3Description": "INT3NT unterstützt jetzt 10 Sprachen: Englisch, Spanisch, Französisch, Deutsch, Italienisch, Portugiesisch, Russisch, Chinesisch, Japanisch und Koreanisch. Wechseln Sie jederzeit die Sprache in der Seitenleiste.",
-        "gotIt": "Verstanden",
-        "feedbackTitle": "Feedback & Feature-Anfragen",
-        "submitFeedback": "Feedback senden"
     }
 }

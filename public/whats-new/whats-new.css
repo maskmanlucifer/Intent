@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:                #ffffff;
+  --surf:              #ffffff;
+  --surf-2:            #ececec;
+  --border:            #e0e0e0;
+  --accent:             #155dfc;
+  --accent-tint:        rgba(21,93,252,0.10);
+  --accent-tint-strong: rgba(21,93,252,0.18);
+  --text:              #1a1a1a;
+  --text-sec:          #666666;
+  --muted:             #999999;
+  --fill:              rgba(0,0,0,0.09);
+  --fill-strong:       rgba(0,0,0,0.18);
+  --p1:                #ef4444;
+  --p2:                #f59e0b;
+  --p3:                #3b82f6;
+  --radius:            12px;
+}
+
+[data-theme="dark"] {
+  --bg:                #0d1117;
+  --surf:              #161b22;
+  --surf-2:            #0a0c10;
+  --border:            #30363d;
+  --accent:             #58a6ff;
+  --accent-tint:        rgba(88,166,255,0.16);
+  --accent-tint-strong: rgba(88,166,255,0.28);
+  --text:              #f0f6fc;
+  --text-sec:          #c9d1d9;
+  --muted:             #8b949e;
+  --fill:              rgba(240,246,252,0.12);
+  --fill-strong:       rgba(240,246,252,0.22);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+h1, h2, .hd-text-name, .feature-title {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.page {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 56px 24px 90px;
+}
+
+.hd {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.hd-logo img {
+  display: block;
+  border-radius: 8px;
+}
+
+.hd-text-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.hd-text-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin-bottom: 10px;
+}
+
+.lede {
+  font-size: 15px;
+  color: var(--text-sec);
+  margin-bottom: 40px;
+  max-width: 46ch;
+}
+
+/* ── Feature cards ── */
+.feature {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+  background: var(--surf);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.feature-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  font-size: 13.5px;
+  color: var(--text-sec);
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 48px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+.preview {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--surf-2);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.08);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.il-arrow {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* ── Illustration 1: linkboard card with pin action ── */
+.il-card {
+  width: 220px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.il-card-thumb {
+  height: 70px;
+  background: linear-gradient(135deg, var(--accent-tint-strong), var(--accent-tint));
+}
+
+.il-card-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+}
+
+.il-card-url {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--fill);
+}
+
+.il-pin-btn {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--fill-strong);
+  flex-shrink: 0;
+}
+
+.il-pin-btn svg { width: 13px; height: 13px; }
+
+.il-pin-btn.active {
+  color: var(--accent);
+  background: var(--accent-tint);
+}
+
+/* ── Illustration 2: priority chips → sidebar item ── */
+.il-priority {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.il-priority-rail {
+  display: flex;
+  gap: 6px;
+  padding: 7px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.il-priority-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.il-priority-chip svg { width: 12px; height: 12px; }
+
+.il-priority-chip.active.p1 { color: var(--p1); background: rgba(239,68,68,0.14); }
+.il-priority-chip.active.p2 { color: var(--p2); background: rgba(245,158,11,0.14); }
+.il-priority-chip.active.p3 { color: var(--p3); background: rgba(59,130,246,0.14); }
+
+.il-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 7px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.il-sidebar-item svg { width: 13px; height: 13px; }
+.il-sidebar-item.p1-color { color: var(--p1); }
+
+/* ── Illustration 3: mail icon → email client ── */
+.il-mail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.il-mail-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: var(--accent-tint);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+}
+
+.il-mail-icon svg { width: 18px; height: 18px; }
+
+.il-mail-client {
+  width: 140px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.il-mail-line {
+  height: 7px;
+  border-radius: 4px;
+  background: var(--fill);
+}
+
+.il-mail-line.title {
+  width: 70%;
+  background: var(--fill-strong);
+}
+
+.il-mail-line.short { width: 45%; }
+
+/* ── Illustration 4: multi-select links ── */
+.il-multi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 220px;
+}
+
+.il-multi-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 7px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.il-multi-check {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  flex-shrink: 0;
+}
+
+.il-multi-check.checked {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.il-multi-btn {
+  margin-top: 4px;
+  align-self: flex-end;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ── Illustration 5: task/subtask navigation ── */
+.il-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.il-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.il-nav-row.subtask { margin-left: 20px; }
+
+.il-nav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  flex-shrink: 0;
+}
+
+.il-nav-row.active .il-nav-dot {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.il-nav-line {
+  width: 90px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--fill);
+}
+
+.il-nav-row.active .il-nav-line {
+  background: var(--accent-tint-strong);
+}
+
+.il-nav-keys {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+kbd {
+  display: inline-block;
+  background: var(--fill);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-family: ui-monospace, 'SF Mono', monospace;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* ── Illustration 6: language chips ── */
+.il-lang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 220px;
+}
+
+.il-lang-chip {
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 7px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.il-lang-chip.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}

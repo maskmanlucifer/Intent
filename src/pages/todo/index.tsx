@@ -12,8 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../redux/categorySlice";
 import { addNewTask, selectTodoList } from "../../redux/todoSlice";
 import CompletedTodoList from "../../components/completed-todo-list";
+import PriorityTodoList from "../../components/priority-todo-list";
 import { selectSettings, syncSettings } from "../../redux/sessionSlice";
-import { KEYBOARD_SHORTCUTS } from "../../constant";
+import { KEYBOARD_SHORTCUTS, PRIORITY_FOLDER_PREFIX } from "../../constant";
+import { TaskPriority } from "../../types";
 const { Sider } = Layout;
 
 const siderStyle: React.CSSProperties = {
@@ -39,6 +41,9 @@ const Todo = ({
   const folders = useSelector(selectCategories);
   const settings = useSelector(selectSettings);
   const { selectedFolder } = settings;
+  const priorityFolder = selectedFolder.startsWith(PRIORITY_FOLDER_PREFIX)
+    ? (selectedFolder.replace(PRIORITY_FOLDER_PREFIX, "") as TaskPriority)
+    : null;
   const todos = useSelector((state: RootState) =>
     selectTodoList(state, selectedFolder),
   );
@@ -56,8 +61,12 @@ const Todo = ({
     const currentSettings = store.getState().session;
     const currentSelectedFolder = currentSettings.selectedFolder;
 
-    // Don't add tasks to the "completed" category
-    if (!currentSelectedFolder || currentSelectedFolder === "completed") {
+    // Don't add tasks to the "completed" category or priority views
+    if (
+      !currentSelectedFolder ||
+      currentSelectedFolder === "completed" ||
+      currentSelectedFolder.startsWith(PRIORITY_FOLDER_PREFIX)
+    ) {
       return;
     }
 
@@ -108,36 +117,41 @@ const Todo = ({
           />
         </Sider>
         <div className="todo-items">
-          {todos.length === 0 && selectedFolder !== "completed" && (
-            <div className="empty-todo">
-              <Empty
-                image={<EmptyTodo />}
-                description={<span>{t('todo.emptyState')}</span>}
-              >
-                <Tooltip
-                  arrow={false}
-                  title={
-                    t('todo.addTask') + " (" + KEYBOARD_SHORTCUTS.addTask.key + ")"
-                  }
-                  mouseEnterDelay={0}
-                  mouseLeaveDelay={0}
-                  placement="bottom"
+          {todos.length === 0 &&
+            selectedFolder !== "completed" &&
+            !priorityFolder && (
+              <div className="empty-todo">
+                <Empty
+                  image={<EmptyTodo />}
+                  description={<span>{t('todo.emptyState')}</span>}
                 >
-                  <Button type="primary" size="small" onClick={handleAddTask}>
-                    {t('todo.addTask')}
-                  </Button>
-                </Tooltip>
-              </Empty>
-            </div>
-          )}
-          {todos.length > 0 && selectedFolder !== "completed" && (
-            <TodoList
-              selectedFolder={selectedFolder}
-              todos={todos}
-              key={selectedFolder}
-            />
-          )}
+                  <Tooltip
+                    arrow={false}
+                    title={
+                      t('todo.addTask') + " (" + KEYBOARD_SHORTCUTS.addTask.key + ")"
+                    }
+                    mouseEnterDelay={0}
+                    mouseLeaveDelay={0}
+                    placement="bottom"
+                  >
+                    <Button type="primary" size="small" onClick={handleAddTask}>
+                      {t('todo.addTask')}
+                    </Button>
+                  </Tooltip>
+                </Empty>
+              </div>
+            )}
+          {todos.length > 0 &&
+            selectedFolder !== "completed" &&
+            !priorityFolder && (
+              <TodoList
+                selectedFolder={selectedFolder}
+                todos={todos}
+                key={selectedFolder}
+              />
+            )}
           {selectedFolder === "completed" && <CompletedTodoList />}
+          {priorityFolder && <PriorityTodoList priority={priorityFolder} />}
         </div>
       </Layout>
     </div>

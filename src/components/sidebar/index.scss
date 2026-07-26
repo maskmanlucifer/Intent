@@ -150,6 +150,18 @@
             }
         }
 
+        &.priority-folder {
+            .anticon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 18px;
+                max-width: 18px;
+                min-height: 18px;
+                font-size: 16px;
+            }
+        }
+
         &.add-folder-item {
             svg path {
                 fill: var(--primary-color);

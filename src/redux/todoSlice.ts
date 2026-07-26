@@ -2,14 +2,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getNewSubtask, getNewTask } from "../helper";
 import { createSelector } from "reselect";
-import { Task, TaskPriority } from "../types";
+import { Task } from "../types";
 import { RootState } from "./store";
 import { getTodos } from "../db";
 import dbHelper from "../db/helper";
-
-const PRIORITY_RANK: Record<TaskPriority, number> = { p1: 0, p2: 1, p3: 2 };
-const getPriorityRank = (task: Task) =>
-  task.priority ? PRIORITY_RANK[task.priority] : 3;
 
 const initialState = {
   // Store tasks by categoryId
@@ -25,18 +21,6 @@ export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
 // Helper function to reorder tasks in a category
 const reorderTasksInCategory = (tasks: Task[]) => {
   return tasks.map((task, index) => ({ ...task, order: index }));
-};
-
-// Helper function to sort incomplete tasks by priority (p1 > p2 > p3 > none)
-const orderTasksByPriority = (tasks: Task[]) => {
-  const incompleteTasks = tasks.filter((task) => !task.isCompleted);
-  const completedTasks = tasks.filter((task) => task.isCompleted);
-
-  const sortedIncomplete = [...incompleteTasks].sort(
-    (a, b) => getPriorityRank(a) - getPriorityRank(b),
-  );
-
-  return reorderTasksInCategory([...sortedIncomplete, ...completedTasks]);
 };
 
 // Helper function to handle task state change ordering
@@ -364,13 +348,13 @@ const todoSlice = createSlice({
       const newPriority =
         taskToUpdate.priority === priority ? undefined : priority;
 
-      const updatedTasks = categoryTasks.map((task) =>
-        task.id === id ? { ...task, priority: newPriority } : task,
+      const updatedTask = { ...taskToUpdate, priority: newPriority };
+
+      state.itemsByCategory[categoryId] = categoryTasks.map((task) =>
+        task.id === id ? updatedTask : task,
       );
 
-      state.itemsByCategory[categoryId] = orderTasksByPriority(updatedTasks);
-
-      dbHelper.upsertTasks(state.itemsByCategory[categoryId]);
+      dbHelper.updateTodo(updatedTask);
     },
   },
   extraReducers: (builder) => {
@@ -427,6 +411,15 @@ export const selectCompletedTodoListLength = createSelector(
 
 export const selectCompletedTodoList = createSelector(selectTodoList, (items) =>
   items.filter((todo) => todo.isCompleted).sort((a, b) => a.order - b.order),
+);
+
+export const selectTasksByPriority = createSelector(
+  (state: RootState) => Object.values(state.todos.itemsByCategory).flat(),
+  (state: RootState, priority: Task["priority"]) => priority,
+  (todos, priority) =>
+    todos
+      .filter((todo) => todo.priority === priority)
+      .sort((a, b) => a.order - b.order),
 );
 
 export const selectActiveTodo = (state: RootState) => state.todos.activeItem;

@@ -57,6 +57,9 @@
         "deleteAll": "Supprimer toutes les tâches terminées",
         "noCompleted": "Aucune tâche terminée disponible"
     },
+    "priorityView": {
+        "noTasks": "Aucune tâche avec cette priorité"
+    },
     "shortcuts": {
         "addTask": "Ajouter une nouvelle tâche",
         "shiftEnterTask": "Sur une tâche : cibler la dernière sous-tâche ou en créer une",
@@ -109,17 +112,5 @@
         "linksRemoved": "Liens supprimés du tableau de liens",
         "deleteLinks_one": "Supprimer {{count}} lien",
         "deleteLinks_other": "Supprimer {{count}} liens"
-    },
-    "whatsNew": {
-        "title": "Quoi de neuf dans INT3NT",
-        "update1Title": "Navigation Améliorée Tâche ↔ Sous-tâche",
-        "update1Description": "Naviguez facilement entre les tâches et les sous-tâches avec Shift+Entrée. Sur une tâche, accédez à la dernière sous-tâche ou créez-en une nouvelle. Sur une sous-tâche, passez à la tâche suivante ou créez-en une. Travaillez plus rapidement avec une navigation au clavier améliorée.",
-        "update2Title": "Ouvrir Plusieurs Liens à la Fois",
-        "update2Description": "Sélectionnez plusieurs liens dans le Tableau de Liens et ouvrez-les tous en un seul clic. Parfait pour gérer plusieurs ressources et traiter vos liens enregistrés efficacement.",
-        "update3Title": "Support Multilingue",
-        "update3Description": "INT3NT prend désormais en charge 10 langues : Anglais, Espagnol, Français, Allemand, Italien, Portugais, Russe, Chinois, Japonais et Coréen. Changez de langue à tout moment depuis la barre latérale.",
-        "gotIt": "Compris",
-        "feedbackTitle": "Commentaires et Demandes de Fonctionnalités",
-        "submitFeedback": "Envoyer des Commentaires"
     }
 }

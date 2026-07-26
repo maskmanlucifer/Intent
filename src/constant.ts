@@ -12,6 +12,8 @@ export const TASK_PRIORITIES = [
   { key: "p3", label: "P3", color: "#3b82f6" },
 ] as const;
 
+export const PRIORITY_FOLDER_PREFIX = "priority-";
+
 export const LINKBOARD_FILTER_OPTIONS = [
   {
     label: "All",

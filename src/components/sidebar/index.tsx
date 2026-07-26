@@ -13,6 +13,7 @@ import {
   DeleteOutlined,
   EditOutlined,
   EllipsisOutlined,
+  FlagFilled,
 } from "@ant-design/icons";
 
 import { Category } from "../../types";
@@ -26,8 +27,8 @@ import { ReactComponent as TickIcon } from "../../assets/icons/tick-icon.svg";
 import { ReactComponent as ClearInputIcon } from "../../assets/icons/clean-input-icon.svg";
 import { MessageInstance } from "antd/es/message/interface";
 import { AppDispatch } from "../../redux/store";
-import { KEYBOARD_SHORTCUTS } from "../../constant";
-import { hasNewUpdates } from "../../constants/version";
+import { KEYBOARD_SHORTCUTS, PRIORITY_FOLDER_PREFIX, TASK_PRIORITIES } from "../../constant";
+import { hasNewUpdates, setLastSeenVersion, APP_VERSION } from "../../constants/version";
 import { ReactComponent as QuestionIcon } from "../../assets/icons/question.svg";
 import { ReactComponent as KeyboardOutlined } from "../../assets/icons/keyboard.svg";
 import { ReactComponent as DatabaseIcon } from "../../assets/icons/database.svg";
@@ -35,7 +36,6 @@ import KeyboardShortcuts from "../shortcuts";
 import ThemeToggle from "../theme-toggle";
 import LanguageSwitcher from "../language-switcher";
 import WhatsNewButton from "../whats-new-button";
-import WhatsNewModal from "../whats-new-modal";
 
 const FEEDBACK_EMAIL = "brightpixellabs@gmail.com";
 
@@ -168,7 +168,6 @@ const Sidebar = ({
   const [isDataStorageModalOpen, setIsDataStorageModalOpen] = useState(false);
   const [isShortcutModalOpen, setIsShortcutModalOpen] = useState(false);
   const [isUpsertCategoryModalOpen, setIsUpsertCategoryModalOpen] = useState(false);
-  const [isWhatsNewModalOpen, setIsWhatsNewModalOpen] = useState(false);
   const [categoryName, setCategoryName] = useState("");
   const [hasUpdates, setHasUpdates] = useState(false);
   const inputRef = useRef<InputRef>(null);
@@ -228,12 +227,11 @@ const Sidebar = ({
   };
 
   const handleWhatsNewClick = () => {
-    setIsWhatsNewModalOpen(true);
-  };
-
-  const handleWhatsNewClose = async () => {
-    setIsWhatsNewModalOpen(false);
     setHasUpdates(false);
+    setLastSeenVersion(APP_VERSION);
+    if (chrome.runtime) {
+      window.open(chrome.runtime.getURL("whats-new/whats-new.html"), "_blank");
+    }
   };
 
   const menuItems = (folder: Category) => {
@@ -345,6 +343,29 @@ const Sidebar = ({
             <span>{completedFolder.name}</span>
           </div>
         )}
+        {TASK_PRIORITIES.map((priority) => {
+          const priorityFolderId = `${PRIORITY_FOLDER_PREFIX}${priority.key}`;
+          return (
+            <div
+              key={priorityFolderId}
+              className={classNames("folder-item", "priority-folder", {
+                selected: selectedFolder === priorityFolderId,
+              })}
+              onClick={() => {
+                setSelectedFolder(priorityFolderId);
+                setIsEditing(false);
+                setIsDeleting(false);
+              }}
+            >
+              {withTooltip(
+                <FlagFilled style={{ color: priority.color }} />,
+                priority.label,
+                isSidebarCollapsed,
+              )}
+              <span>{priority.label}</span>
+            </div>
+          );
+        })}
         {isEditing !== true && (
           <div
             className={classNames("folder-item", "add-folder-item")}
@@ -540,11 +561,6 @@ const Sidebar = ({
         >
           <Input size="small" ref={inputRef} value={categoryName} onChange={(e) => setCategoryName(e.target.value)} placeholder={isEditing ? t('sidebar.enterNewName') : t('sidebar.enterNewName')} />
         </Modal>
-        <WhatsNewModal
-          open={isWhatsNewModalOpen}
-          onClose={handleWhatsNewClose}
-          hasUpdates={hasUpdates}
-        />
       </div>
     </div>
   );
